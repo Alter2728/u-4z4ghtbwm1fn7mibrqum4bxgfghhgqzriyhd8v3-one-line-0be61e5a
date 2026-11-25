@@ -51,6 +51,9 @@ def main() -> None:
     with open(path, "r", encoding="utf-8", newline="") as f:
         written = f.read()
     assert written == ENTRY, "written file must match the entry exactly"
+    assert len(written.encode("utf-8")) == len(entry_bytes), (
+        "written bytes must match the entry exactly"
+    )
     assert 1 <= len(written) <= 140 and "\n" not in written
 
     print(ENTRY)
